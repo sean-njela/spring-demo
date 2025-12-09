@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-demo
+
+payment-gateway: blik
+
+stripe:
+  supported-currencies: USD,EUR,PLN
+
