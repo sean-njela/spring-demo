@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Scope;
 // with Service annotations being the go to for simpler solutions.
 // This method enables us to employ conditional logic to determine which bean to utilize.
 // Spring boot initializes all Beans when the app starts. (Early initialization).
-// We can also configure a later initialization if a certain bean consumes
+// We can also configure a lazy initialization if a certain bean consumes
 // a large chunk of memory. In this case we use the @Lazy annotation.
-// Beans have a @Scope annotation that determines how many times their created:
+// Beans have a @Scope annotation that determines how many times they are created:
 //      Singleton: One instance.
 //      Prototype: Bean created whenever an instance is called.
 //      Request: Bean created for every http request. Lifecycle ends when session ends.

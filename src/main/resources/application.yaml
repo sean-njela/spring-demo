@@ -1,9 +1,12 @@
 spring:
   application:
     name: spring-demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo-db?createDatabaseIfNotExist=true
+    username: root
+    password: admin
 
 payment-gateway: blik
 
 stripe:
   supported-currencies: USD,EUR,PLN
-

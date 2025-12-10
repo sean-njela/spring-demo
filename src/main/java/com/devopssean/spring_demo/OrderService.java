@@ -1,6 +1,6 @@
 package com.devopssean.spring_demo;
 
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
 // Commented out in favor of AppConfig
 //@Service

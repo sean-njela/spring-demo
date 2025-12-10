@@ -1,8 +1,8 @@
 package com.devopssean.spring_demo;
 
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
-// Commented out in favor of AppConfig
+// Commented out in favour of AppConfig
 //@Service
 public class PayPalPaymentService implements PaymentService {
     @Override
