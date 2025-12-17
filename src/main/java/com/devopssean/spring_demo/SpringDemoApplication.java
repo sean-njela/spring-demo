@@ -1,5 +1,7 @@
 package com.devopssean.spring_demo;
 
+import com.devopssean.spring_demo.entities.Address;
+import com.devopssean.spring_demo.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,8 +17,26 @@ public class SpringDemoApplication {
 //        orderService.placeOrder();
 
         // Using Beans and IOC
-        ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
-        var orderService2 = context.getBean(OrderService.class);
-        orderService2.placeOrder();
+//        ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
+//        var orderService2 = context.getBean(OrderService.class);
+//        orderService2.placeOrder();
+
+        // Running in the terminal (Comment out the above code)
+        // Building DB object using builder pattern from lombok
+       var user = User.builder()
+                        .name("Sean")
+                        .email("timba@sena.com")
+                        .password("12345")
+                        .build();
+
+	   var address = Address.builder()
+			   .city("Warsaw")
+			   .street("juku street")
+			   .zip("12345")
+			   .build();
+
+	   user.addAddress(address);
+
+	   System.out.println(user);
 	}
 }

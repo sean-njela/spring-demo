@@ -1,12 +1,25 @@
 package com.devopssean.spring_demo.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Builder
 @Entity
 @Table(name = "users") // The table name in our DB
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false, name = "name")
@@ -18,35 +31,28 @@ public class User {
     @Column(nullable = false, name = "password")
     private String password;
 
-    public Long getId() {
-        return id;
+    @OneToMany(mappedBy = "user")
+    // mappedBy is the owner of the relationship (the private variable name in the Entity class of the table where the relationship is explicitly stated)
+    // Since we only stated the foreign key relationship in addresses table, addresses.user becomes the owner
+    @Builder.Default // Because builder doesn't initialize lists and other objects, causing errors on runtime
+    private List<Address> addresses = new ArrayList<Address>();
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setUser(this);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void removeAddress(Address address) {
+        addresses.remove(address);
+        address.setUser(null);
     }
 
-    public String getName() {
-        return name;
-    }
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_tags",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags = new HashSet<>();
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
