@@ -2,11 +2,14 @@ package com.devopssean.spring_demo.entities;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Setter
 @Getter
 @Entity
@@ -28,4 +31,11 @@ public class Profile {
 
     @Column(name = "loyalty_points")
     private Integer loyaltyPoints;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    @MapsId // This is native to the owner of the one-to-one relationship
+    // It tells hibernate to use the column as a primary and foreign key
+    @ToString.Exclude
+    private User user;
 }

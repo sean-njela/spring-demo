@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
-// It is better to use this to configure which bean object gets injected into the application
+// It is better to use AppConfig to configure which bean object gets injected into the application
 // context over @Service annotations in the interface implementations. This allows us to decouple
 // application configuration from the applications' code. This approach should be the default,
 // with Service annotations being the go to for simpler solutions.

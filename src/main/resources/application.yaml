@@ -5,6 +5,8 @@ spring:
     url: jdbc:mysql://localhost:3306/demo-db?createDatabaseIfNotExist=true
     username: root
     password: admin
+  jpa:
+    show-sql: true
 
 payment-gateway: blik
 

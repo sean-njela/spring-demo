@@ -3,6 +3,9 @@ package com.devopssean.spring_demo.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+// Use the annotations and the builder pattern only where necessary.
+// It should not be a default.
+// Use the builder pattern if your entity object has a lot of optional fields
 @Setter
 @Getter
 @AllArgsConstructor
@@ -27,7 +30,8 @@ public class Address {
     private String zip;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") // @Joincolumn instead of @Column because it is a foreign key field
+    // @JoinColumn signifies that this is the owner of the relationship
     @ToString.Exclude // To avoid stack overflow errors due to loop when reading addresses
     private User user;
 }
