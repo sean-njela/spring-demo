@@ -8,19 +8,21 @@ import org.springframework.context.annotation.Scope;
 
 // It is better to use AppConfig to configure which bean object gets injected into the application
 // context over @Service annotations in the interface implementations. This allows us to decouple
-// application configuration from the applications' code. This approach should be the default,
+// application configuration from the applications' code. We thus move all the @ annotations
+// from the application code and into this file. This approach should be the default,
 // with Service annotations being the go to for simpler solutions.
 // This method enables us to employ conditional logic to determine which bean to utilize.
 // Spring boot initializes all Beans when the app starts. (Early initialization).
 // We can also configure a lazy initialization if a certain bean consumes
 // a large chunk of memory. In this case we use the @Lazy annotation.
 // Beans have a @Scope annotation that determines how many times they are created:
-//      Singleton: One instance.
+//      Singleton: One instance. (Default)
 //      Prototype: Bean created whenever an instance is called.
 //      Request: Bean created for every http request. Lifecycle ends when session ends.
 //      Session: Bean created for each http session. Lifecycle ends when session ends.
 // If using the simple version, apply @Scope to the Manager class.
 // We can manipulate Bean lifecycle behaviour using @PostConstruct and @PreDestroy annotations.
+// These annotate a function that runs at that specific time. These are put in the manager class.
 
 @Configuration
 public class AppConfig {

@@ -13,6 +13,14 @@ import org.springframework.context.ApplicationContext;
 public class SpringDemoApplication {
 
 	public static void main(String[] args) {
+		// This runs the app in the terminal
+//		var orderService = new OrderService(new StripePaymentService());
+//		orderService.placeOrder();
+		// OR using IOC
+//		ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
+//		var manager = context.getBean(OrderService.class);
+//		manager.placeOrder();
+
         // USING a setter (SHOULD ONLY BE FOR OPTIONAL DEPENDENCIES)
         // The constructor injection method above is the default way of passing objects
 //        var orderService = new OrderService();
@@ -21,6 +29,8 @@ public class SpringDemoApplication {
 
         // Using Beans and IOC
         ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
+		// The line below essentially tells spring to manage the object for us
+		// Instead of us doing this `var orderService = new OrderService(new StripePaymentService());`
 		var repository = context.getBean(UserRepository.class);
 
 		var orderService2 = context.getBean(OrderService.class);

@@ -5,6 +5,7 @@ package com.devopssean.spring_demo;
 
 // Commented out in favour of AppConfig
 //@Service
+// primary specifies the main bean to load when you have multiple
 //@Primary
 public class StripePaymentService implements PaymentService {
     @Override
