@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Scope;
 //      Request: Bean created for every http request. Lifecycle ends when session ends.
 //      Session: Bean created for each http session. Lifecycle ends when session ends.
 // If using the simple version, apply @Scope to the Manager class.
-// We can manipulate Bean lifecycle behaviour using @PostConstruct and @PreDestroy annotations.
+// We can manipulate Bean lifecycle behaviour using @PostConstruct and @PreDestroy annotations in the manager class.
 // These annotate a function that runs at that specific time. These are put in the manager class.
 
 @Configuration
@@ -35,6 +35,7 @@ public class AppConfig {
     private String paymentGateway;
 
     @Bean
+    // @Lazy means load it when its needed not early on
     @Lazy
     public PaymentService stripe() {
         System.out.println("Initializing Stripe");
