@@ -17,9 +17,9 @@ public class SpringDemoApplication {
 //		var orderService = new OrderService(new StripePaymentService());
 //		orderService.placeOrder();
 		// OR using IOC
-//		ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
-//		var manager = context.getBean(OrderService.class);
-//		manager.placeOrder();
+		ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
+		var orderManager = context.getBean(OrderService.class);
+		orderManager.placeOrder();
 
         // USING a setter (SHOULD ONLY BE FOR OPTIONAL DEPENDENCIES)
         // The constructor injection method above is the default way of passing objects
@@ -28,26 +28,26 @@ public class SpringDemoApplication {
 //        orderService.placeOrder();
 
         // Using Beans and IOC
-        ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
+//        ApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
 		// The line below essentially tells spring to manage the object for us
 		// Instead of us doing this `var orderService = new OrderService(new StripePaymentService());`
-		var repository = context.getBean(UserRepository.class);
+//		var userRepository = context.getBean(UserRepository.class);
 
-		var orderService2 = context.getBean(OrderService.class);
-        orderService2.placeOrder();
+//		var orderService2 = context.getBean(OrderService.class);
+//        orderService2.placeOrder();
 
         // Running in the terminal (Comment out the above code)
-        // Building DB object using builder pattern from lombok
-        var user = User.builder()
-			   	.name("Sean")
-			   	.email("timba@sena.com")
-			   	.password("12345")
-			   	.build();
+        // Building DB object using builder pattern from lombok @Builder
+//        var user = User.builder()
+//			   	.name("Sean")
+//			   	.email("timba@sena.com")
+//			   	.password("12345")
+//			   	.build();
 
 //	   	var address = Address.builder()
 //				.city("Warsaw")
 //			   	.street("juku street")
-//			   	.zip("12345")
+//			   	.zip("12345")/v
 //			   	.build();
 //
 //	   	var profile = Profile.builder()
@@ -60,14 +60,14 @@ public class SpringDemoApplication {
 //	   	user.addTag("devops");
 //	   	user.addProfile(profile);
 
-//	   	repository.save(user); // This way we do not write any SQL statements
+//	   	userRepository.save(user); // This way we do not write any SQL statements
 
-//		repository.findById(5L).orElseThrow();
+//		userRepository.findById(5L).orElseThrow();
 
-		repository.findAll().forEach(u -> System.out.println(u.getEmail()));
+//		userRepository.findAll().forEach(userInList -> System.out.println(userInList.getEmail()));
 
 //		repository.deleteById(5L);
 
-	   	System.out.println(user.getEmail());
+//	   	System.out.println(user.getEmail());
 	}
 }
